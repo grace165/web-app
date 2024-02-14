@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSCI 430 Web App</title>
+    <link rel="stylesheet" href="css/createaccount.css">
+    <link rel="js" href="js/createaccount.js">
+</head>
+
+<body>
+    <div class="center">
+        <h1>Create Account</h1>
+
+    </div>
+    <form class="center">
+
+        <input type="text" placeholder="Username" name="username" id="username" required>
+        <div class="space"></div>
+        <!--label for="password"><b>Password</b></label-->
+        <input type="password" placeholder="Password" name="password" id="password" required minlength="8">
+        <div class="space"></div>
+
+        <!--label for="email"><b>Email</b></label-->
+        <input type="text" placeholder="Email address" name="email" id="email" required>
+        <div class="space"></div>
+
+        <input type="text" placeholder="School" name="school" id="school" required>
+        <div class="space"></div>
+
+        <input type="text" placeholder="Major(s)" id="major" name="major">
+        <div class="space"></div>
+
+        <div class="center">
+            <button type="submit" class="btn" id="createButton">Create Account</button>
+        </div>
+    </form>
+
+    <script type="module" src="js/createaccount.js"> </script>
+</body>
+
+</html>
