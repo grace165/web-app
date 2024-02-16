@@ -1,7 +1,3 @@
-
-
-
-
 document.getElementById("createButton").addEventListener('click', async (event) => {
     event.preventDefault()
 

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>.
+<html>
+
+<head>
+    <title>CSCI 430 Web App</title>
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+
+<body>
+    <div class="center">
+        <h1>Login</h1>
+    </div>
+
+    <form class="center" id="form">
+            <!--label for="email"><b>Email</b></label-->
+            <input type="text" placeholder="Email address" name="email" id="email" required>
+            <div class="space"></div>
+
+            <!--label for="password"><b>Password</b></label-->
+            <input type="password" placeholder="Password" name="password" id="password" required minlength="8">
+            <div class="space"></div>
+
+        <div class="center">
+            <button type="submit" class="btn" id="loginButton">Login</button>
+        </div>
+    </form>
+
+    <div class="space"></div>
+    <div class="space"></div>
+
+    <div class="center" id="btn">
+        <a class="btn" href="createaccount.html">New? Create Account</a>
+    </div>
+
+    <div id="divp"></div>
+
+    <script type="module" src="js/login.js"> </script>
+
+</body>
+
+</html>
