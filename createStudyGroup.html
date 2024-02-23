@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSCI 430 Web App</title>
+    <link rel="stylesheet" href="css/createStudyGroup.css">
+    <link rel="js" href="js/createStudyGroup.js">
+</head>
+
+<body>
+    <div class="space"></div>
+    <div class="container">
+        <div class="center">
+            <h1>Create Study Group</h1>
+
+        </div>
+        <form class="center">
+
+            <input type="text" placeholder="Group Name" name="groupname" id="groupname" required>
+            <div class="space"></div>
+
+            <!--input type="text" placeholder="Owner" name="password" id="password" required minlength="8">
+            <div class="space"></div-->
+
+            <div class="checkboxes">
+                <label for="public">Public</label>
+                <input type="radio" placeholder="Public" name="options" id="public" value="true" required checked>
+
+                <label for="private">Private</label>
+                <input type="radio" placeholder="Private" name="options" id="private" value="false" required>
+            </div>
+
+            <div class="space"></div>
+
+            <input type="text" placeholder="Description" id="description" name="description">
+            <div class="space"></div>
+
+            <input type="text" placeholder="School" id="school" name="school">
+            <div class="space"></div>
+
+            <input type="text" placeholder="Course Number" id="courseNum" name="courseNum">
+            <div class="space"></div>
+
+            <input type="number" placeholder="Max Participants" name="maxParticipants" id="maxParticipants" min="1"
+                required>
+            <div class="space"></div>
+
+            <input type="text" placeholder="Start Date" id="startDate" name="startDate" onfocus="(this.type='date')"
+                onblur="(this.type='text')">
+            <div class="space"></div>
+
+            <input type="text" placeholder="End Date" id="endDate" name="endDate" onfocus="(this.type='date')"
+                onblur="(this.type='text')">
+            <div class="space"></div>
+
+            <p style="text-decoration: underline">Meeting Time(s) </p>
+
+            <div class="meetings" id="meetingstimes">
+
+                <div class="leftAligned">
+
+                    <div id="meetings">
+                        <p>Meeting Days: </p>
+                        <label for="Monday">Monday</label>
+                        <input type="checkbox" id="Monday" value="Monday" name="dayofweek">
+
+                        <label for="Tuesday">Tuesday</label>
+                        <input type="checkbox" value="Tuesday" id="Tuesday" name="dayofweek">
+
+                        <label for="Wednesday">Wednesday</label>
+                        <input type="checkbox" value="Wednesday" id="Wednesday" name="dayofweek">
+
+                        <label for="Thursday">Thursday</label>
+                        <input type="checkbox" value="Thursday" id="Thursday" name="dayofweek">
+
+                        <label for="Friday">Friday</label>
+                        <input type="checkbox" value="Friday" id="Friday" name="dayofweek">
+
+                        <label for="Saturday">Saturday</label>
+                        <input type="checkbox" value="Saturday" id="Saturday" name="dayofweek">
+
+                        <label for="Sunday">Sunday</label>
+                        <input type="checkbox" value="Sunday" id="Sunday" name="dayofweek">
+
+                        <div class="space"></div>
+                    </div>
+                </div>
+
+                <div class="right aligned">
+                    <input type="String" placeholder="Meeting Time (ex: 13:00)" id="time" name="time"
+                        style="width: 300px;">
+                    <div class="space"></div>
+
+                    <input type="text" placeholder="Location" id="location" name="location" style="width: 300px;">
+                    <div class="space"></div>
+
+                    <button class="plusButton" type="button" id="plusButton">Add Meeting Time</button>
+                </div>
+            </div>
+
+            <pre id="idPrint"> </pre>
+
+            <div class="space"></div>
+
+            <!--input type="text" placeholder="Participants" id="major" name="major">
+            <div class="space"></div-->
+
+            <div class="center">
+                <button type="submit" class="btn" id="createGroupButton">Create Study Group</button>
+            </div>
+
+            <h2></h2>
+
+            <div class="space"></div>
+        </form>
+    </div>
+
+    <div class="space"></div>
+
+    <script type="module" src="js/createStudyGroup.js"> </script>
+</body>
+
+</html>

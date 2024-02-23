@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>.
+<!DOCTYPE HTML>
 <html>
 
 <head>
@@ -8,11 +8,14 @@
 </head>
 
 <body>
-    <div class="center">
-        <h1>Login</h1>
-    </div>
+    <div class="space"></div>
 
-    <form class="center" id="form">
+    <div class="container">
+        <div class="center">
+            <h1>Login</h1>
+        </div>
+
+        <form class="center" id="form">
             <!--label for="email"><b>Email</b></label-->
             <input type="text" placeholder="Email address" name="email" id="email" required>
             <div class="space"></div>
@@ -21,19 +24,21 @@
             <input type="password" placeholder="Password" name="password" id="password" required minlength="8">
             <div class="space"></div>
 
-        <div class="center">
-            <button type="submit" class="btn" id="loginButton">Login</button>
+            <div class="center">
+                <button type="submit" class="btn" id="loginButton">Login</button>
+            </div>
+        </form>
+
+        <div class="space"></div>
+        <div class="space"></div>
+
+        <div class="center" id="btn">
+            <a class="btn" href="createaccount.html">New? Create Account</a>
         </div>
-    </form>
 
-    <div class="space"></div>
-    <div class="space"></div>
+        <h2>hello</h2>
 
-    <div class="center" id="btn">
-        <a class="btn" href="createaccount.html">New? Create Account</a>
     </div>
-
-    <div id="divp"></div>
 
     <script type="module" src="js/login.js"> </script>
 

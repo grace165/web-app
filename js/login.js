@@ -1,11 +1,12 @@
 document.getElementById("loginButton").addEventListener('click', async (event) => {
     event.preventDefault()
 
+    const h2 = document.querySelector("h2")
+
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
 
     console.log("inside fetchToEndpointUsingPostMethod")
-    const mssg7 = document.querySelector("#message7")
 
     const url = "http://127.0.0.1:3000/user/login"
 
@@ -30,43 +31,29 @@ document.getElementById("loginButton").addEventListener('click', async (event) =
     let response = await fetch(url, options)
     const obj = await response.json()
 
+    console.log("looking for else block")
+
     if (response.status == 200) {
         console.log("saving user obj and token in local storage")
         localStorage.setItem("data", JSON.stringify(data))
         localStorage.setItem("token", obj.token);
 
-        // localStorage.setItem("token", response.options.token)
-        //localStorage.setItem("token", response.data.token)
-
         localStorage.getItem("token")
     
-
         var retrievedData = localStorage.getItem("data")
 
         console.log("retrievedData: ", JSON.parse(retrievedData))
 
+        h2.innerHTML = 'Logging in...'
         console.log('redirecting')
-        location.href = "main.html"
-    }
-    else if (response.status == 500) {
-        //var paragraph = document.getElementById("p")
-        //paragraph.textContent += "Please try logging in again!"
-        const para = document.createElement("p")
-        const node = document.createTextNode("Please try logging in again!")
-        para.appendChild(node)
 
-        const element = document.getElementById("divp")
-        const child = document.getElementById("btn")
-        element.insertBefore(para, child)
-        //element.appendChild(para)
+        setTimeout(() => {
+            location.href = "main.html"
+        }, 4000)
 
-        // document.getElementById("p").innerHTML = "Please try logging in again!"
-
-    }
-    else if (response.status == 401) {
-        console.log("not redirecting")
-        paragraph.textContent += "Please try logging in again!"
-        mssg7.innerHTML = "Error: " + obj.message
+    } else if (response.status == 500) {
+        console.log ("in else block")
+        h2.innerHTML = 'Please try logging in again'
     }
 })
 

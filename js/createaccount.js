@@ -1,6 +1,8 @@
 document.getElementById("createButton").addEventListener('click', async (event) => {
     event.preventDefault()
 
+    const h2 = document.querySelector("h2")
+
     const username = document.getElementById("username").value
     const password = document.getElementById("password").value
     const email = document.getElementById("email").value
@@ -36,10 +38,15 @@ document.getElementById("createButton").addEventListener('click', async (event) 
 
     if (response.status == 201) {
         console.log('redirecting')
-        location.href = "main.html"
+
+        h2.innerHTML = 'Please check your email and click on the link we sent to verify your account'
+
+        setTimeout(() => {
+            location.href = "main.html"
+        }, 8000)
     }
     else if (response.status == 401) {
-        mssg7.innerHTML = "Error: " + obj.message
+        console.log("error in creating account, 401")
     }
 })
 

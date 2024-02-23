@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(229, 209, 255);
+    background-color: white;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -7,7 +7,7 @@ body {
     margin: auto;
 }
 
-h1 {
+h1, h2 {
     color: rgba(111, 0, 255, 0.671);
     font-size: 40px;
 }
@@ -26,17 +26,32 @@ a:hover{
     color: lightblue;
 }
 
+form{
+    margin: auto;
+    width: 400px;
+    height: auto;
+}
+
+input{
+    border-radius: 10px;
+    border: 2px solid rgba(111, 0, 255, 0.671);
+    height: 50px;
+    width: 400px;
+    text-indent: 15px;
+}
+
 .center {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
 }
 
 .space{
-    margin-top: 80px;
+    margin-top: 30px;
 }
 
 .btn{
+    font-size: 15px;
     text-decoration: none;
     padding: 15px;
     border: 2px solid rgba(51, 1, 116, 0.671);
@@ -45,10 +60,22 @@ a:hover{
     color: white;
 }
 
+.btn:hover{
+    color: lightblue;
+}
+
 .container{
     border: 3px solid rgba(111, 0, 255, 0.671);
-    min-height: 400px;
-    max-width: 800px;
-    height: auto;
+    border-radius: 15px;
+    min-height: 500px;
+    max-width: 600px;
     margin: auto;
+    background-color: rgb(229, 209, 255);
+    padding-top: 80px;
+}
+
+#divp {
+    height: 20px;
+    color: black;
+    font-size: 40px;
 }

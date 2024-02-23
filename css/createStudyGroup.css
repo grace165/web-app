@@ -7,15 +7,21 @@ body {
     margin: auto;
 }
 
-h1, h2 {
+h1 {
     color: rgba(111, 0, 255, 0.671);
     font-size: 40px;
 }
 
+h2 {
+    color: rgba(111, 0, 255, 0.671);
+    font-size: 25px;
+}
+
 p {
     font-family: sans-serif;
-    font-weight: bold;
-    color: darkslategray;
+    color: black;
+    text-align: left;
+    margin-left: 10px;
 }
 
 a {
@@ -38,6 +44,33 @@ input{
     height: 50px;
     width: 400px;
     text-indent: 15px;
+}
+
+label{
+    font-family: sans-serif;
+    color: black;
+    display: flex;
+    margin-left: 10px;
+}
+
+input[type="radio"] {
+    width: 20px;
+    display: flex;
+    margin-top: -35px;
+    margin-left: 80px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    display: flex;
+    margin-top: -35px;
+    margin-left: 100px;
+}
+
+pre{
+    font-size: 15px;
+    color: black;
+    font-family: sans-serif;
 }
 
 .center {
@@ -63,6 +96,19 @@ input{
     color: lightblue;
 }
 
+.plusButton{
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid rgba(51, 1, 116, 0.671);
+    border-radius: 15px;
+    background-color: rgba(111, 0, 255, 0.671);
+    color: white;
+}
+
+.plusButton:hover{
+    color: lightblue;
+}
+
 .container{
     border-radius: 15px;
     border: 3px solid rgba(111, 0, 255, 0.671);
@@ -70,4 +116,23 @@ input{
     max-width: 800px;
     margin: auto;
     background-color: rgb(229, 209, 255);
+}
+
+.rightAligned{
+    flex: 1;
+    margin: 10px;
+}
+
+.leftAligned{
+    flex: 1;
+    margin-right: 70px;
+}
+
+.meetings{
+    display: flex;
+    width: 50%;
+}
+
+#meetings{
+    color: black;
 }
