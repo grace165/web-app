@@ -64,8 +64,8 @@ document.getElementById("createGroupButton").addEventListener('click', async (ev
 
     const h2 = document.querySelector("h2")
 
-    const url = "http://127.0.0.1:3000/studygroup"
-    //const url = "https://api-server-1.azurewebsites.net/studygroup"
+    //const url = "http://127.0.0.1:3000/studygroup"
+    const url = "https://api-server-1.azurewebsites.net/studygroup"
 
     console.log("inside create group function")
 
