@@ -8,8 +8,8 @@ document.getElementById("loginButton").addEventListener('click', async (event) =
 
     console.log("inside fetchToEndpointUsingPostMethod")
 
-    const url = "http://127.0.0.1:3000/user/login"
-    //const url = "https://api-server-1.azurewebsites.net/user/login"
+    //const url = "http://127.0.0.1:3000/user/login"
+    const url = "https://api-server-1.azurewebsites.net/user/login"
 
     const data = {
         code: 7,
