@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="css/searchStudyGroups.css">
+</head>
+
+<body>
+    <div class="space"></div>
+
+    <h1>Search Study Groups</h1>
+    <div class="container center">
+
+        <div class="space"></div>
+
+        <form class="center">
+            <div class="leftAligned">
+                <input type="text" id="search" name="search" placeholder="Search...">
+                <div class="space"></div>
+
+                <input type="number" id="limit" name="limit" placeholder="Number of results shown" min="1">
+                <div class="space"></div>
+
+                <input type="number" id="skip" name="skip" placeholder="Number of results skipped" min="0">
+                <div class="space"></div>
+            </div>
+
+            <div class="leftAligned">
+                <p>Sort By:</p>
+                <label for="asc">Ascending</label>
+                <input type="radio" id="asc" name="sortBy" checked value="true">
+
+                <label for="desc">Descending</label>
+                <input type="radio" id="desc" name="sortBy" value="false">
+            </div>
+
+            <div class="leftAligned">
+                <p>Ongoing?</p>
+                <label for="ongoing">True</label>
+                <input type="radio" id="ongoing" name="ongoing" checked value="true">
+
+                <label for="notOngoing">False</label>
+                <input type="radio" id="notOngoing" name="ongoing" value="false">
+            </div>
+
+            <div class="space"></div>
+            <button class="btn" type="submit" id="searchButton">Search</button>
+        </form>
+
+        <div class="space"></div>
+
+        <h2></h2>
+
+        <p class="container2" id="here"></p>
+
+        <!--div class="container2">
+            <h3 id="nameBox"></h3>
+            <h3 id="schoolBox"></h3>
+            <h3 id="coursenumBox"></h3>
+            <h3 id="descriptionBox"></h3>
+            <h3 id="ispublicBox"></h3>
+            <h3 id="maxparticipantsBox"></h3>
+            <h3 id="startdateBox"></h3>
+            <h3 id="enddateBox"></h3>
+        </div-->
+
+    </div>
+
+    <div class="space"></div>
+
+    <div class="center">
+        <a class="btn" href="main.html">Back to Main</a>
+    </div>
+
+    <div class="space"></div>
+
+    <script src="js/searchStudyGroups.js"></script>
+</body>
+
+</html>
