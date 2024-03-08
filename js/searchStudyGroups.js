@@ -25,8 +25,8 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
     const enddateBox = document.getElementById("enddateBox")
     */
 
-    const url = new URL("http://127.0.0.1:3000/studygroups?")
-    //const url = "https://api-server-1.azurewebsites.net/studygroups?"
+    //const url = new URL("http://127.0.0.1:3000/studygroups?")
+    const url = new URL("https://api-server-1.azurewebsites.net/studygroups?")
 
     //let params = new URL(window.location.href)
 
