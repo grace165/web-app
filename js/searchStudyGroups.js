@@ -43,7 +43,7 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
         url.searchParams.append("skip", skip)
     }
     if (sortBy !== null) {
-        sortByFinal = "start date: " + sortBy
+        sortByFinal = "start_date:" + sortBy
         url.searchParams.append("sortBy", sortByFinal)
     }
     if (ongoing !== null) {
