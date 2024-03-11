@@ -23,6 +23,18 @@ h4 {
     font-size: 20px;
 }
 
+h5{
+    color: black;
+    font-size: 17.5px;
+    margin-left: 20px;
+}
+
+h6{
+    border: 2px solid lightgray;
+    width: 100px;
+    margin-left: 40px;
+}
+
 p {
     font-family: sans-serif;
     font-weight: bold;
@@ -64,6 +76,11 @@ hr{
     width: 700px;
 }
 
+hr2{
+    border-radius: 0px;
+    border: 2px solid red;
+    width: 700px;
+}
 .center {
     display: block;
     justify-content: center;

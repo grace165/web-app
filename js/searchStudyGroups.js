@@ -123,12 +123,38 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
             here.appendChild(maxParties)
 
             const starter = document.createElement("h4")
-            starter.innerHTML = "Start date: " + myobj.start_date
+            starter.innerHTML = "Start date: " + myobj.start_date.substring(0, 10)
             here.appendChild(starter)
 
             const ender = document.createElement("h4")
-            ender.innerHTML = "End date: " + myobj.end_date
+            ender.innerHTML = "End date: " + myobj.end_date.substring(0, 10)
             here.appendChild(ender)
+
+            const meetings = document.createElement("h4")
+            meetings.innerHTML = "Meeting Times: "
+            here.appendChild(meetings)
+
+            var myobj1 = obj[key].meeting_times
+
+            for (var i = 0; i < myobj1.length; i++) {
+                if (i > 0) {
+                    const hr2 = document.createElement('h6')
+                    here.appendChild(hr2)
+                }
+
+                const details = document.createElement("h5")
+                details.innerHTML = "Day: " + myobj1[i].day
+                here.appendChild(details)
+        
+                const details1 = document.createElement("h5")
+                details1.innerHTML = "Time: " + myobj1[i].time
+                here.appendChild(details1)
+            
+                const details2 = document.createElement("h5")
+                details2.innerHTML = "Location: " + myobj1[i].location
+                here.appendChild(details2)
+            }
+
 
             // here.parentNode.insertAfter(hr, here)
 
