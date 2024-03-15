@@ -1,4 +1,5 @@
 const token = localStorage.getItem("token")
+const userid = localStorage.getItem("userid")
 
 document.getElementById("searchButton").addEventListener('click', async (event) => {
     event.preventDefault()
@@ -81,8 +82,9 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
 
     if (response.status == 200) {
         console.log("Searching study groups...")
-        console.log(token)
+        console.log("token: " + token)
         console.log(obj)
+        console.log("userid: " + userid)
 
         //const obj2 = JSON.stringify(obj)
 
@@ -141,23 +143,35 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
                     const hr2 = document.createElement('h6')
                     here.appendChild(hr2)
                 }
-
                 const details = document.createElement("h5")
                 details.innerHTML = "Day: " + myobj1[i].day
                 here.appendChild(details)
-        
+
                 const details1 = document.createElement("h5")
                 details1.innerHTML = "Time: " + myobj1[i].time
                 here.appendChild(details1)
-            
+
                 const details2 = document.createElement("h5")
                 details2.innerHTML = "Location: " + myobj1[i].location
                 here.appendChild(details2)
             }
 
+            console.log("study group owner id: " + myobj.owner)
 
-            // here.parentNode.insertAfter(hr, here)
+            if (myobj.owner == userid) {
+                const editButton = document.createElement("button")
+                //studygroupID = myobj._id
+                editButton.className = "editButton"
+                editButton.innerHTML = "Edit Study Group"
 
+                let value = myobj._id
+
+                editButton.addEventListener('click', function() {
+                    EditStudyGroup(value)
+                })
+                here.appendChild(editButton)
+            }
+    
             //nameBox.innerHTML = "Study Group: " + myobj.name + "\n"
             //schoolBox.innerHTML = "School: " + myobj.school + "\n"
             //coursenumBox.innerHTML = "Course number: " + myobj.course_number + "\n"
@@ -168,10 +182,18 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
             //enddateBox.innerHTML = "End date: " + myobj.end_date + "\n"
         }
 
-        //h3.innerHTML = obj2
-
     } else {
         console.log("in else block")
         h2.innerHTML = 'Please try searching again...'
     }
 })
+
+
+function EditStudyGroup(value) {
+    console.log("in edit study group function")
+
+    localStorage.setItem("studyGroupID",value)
+    console.log(localStorage.getItem("studyGroupID"))
+
+    window.location.href = "editStudyGroup.html"
+}

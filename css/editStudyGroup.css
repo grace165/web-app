@@ -15,7 +15,6 @@ h1, h2 {
 h3 {
     color: rgba(111, 0, 255, 0.671);
     font-size: 30px;
-    text-decoration: underline;
 }
 
 h4 {
@@ -53,6 +52,11 @@ form{
     margin: auto;
     width: 400px;
     height: auto;
+}
+
+label{
+    text-align: left;
+    justify-content: left;
 }
 
 input{

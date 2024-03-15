@@ -37,9 +37,11 @@ document.getElementById("loginButton").addEventListener('click', async (event) =
     if (response.status == 200) {
         console.log("saving user obj and token in local storage")
         localStorage.setItem("data", JSON.stringify(data))
-        localStorage.setItem("token", obj.token);
+        localStorage.setItem("token", obj.token)
+        localStorage.setItem("userid", obj.user._id)
 
         localStorage.getItem("token")
+        localStorage.getItem("userid")
     
         var retrievedData = localStorage.getItem("data")
 
