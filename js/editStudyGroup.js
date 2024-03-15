@@ -68,7 +68,7 @@ async function getSGInfo() {
                     document.getElementById("private").checked = true
                 }
 
-                if(myobj.meeting_times)
+                //if(myobj.meeting_times)
 
             }
         }
