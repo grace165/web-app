@@ -145,8 +145,8 @@ document.getElementById("saveChangesBtn").addEventListener('click', async (event
     const start_date = document.getElementById("startDate").value
     const end_date = document.getElementById("endDate").value
 
-    const url = new URL("http://127.0.0.1:3000/studygroup/" + studyGroupID)
-    //const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + studyGroupID)
+    //const url = new URL("http://127.0.0.1:3000/studygroup/" + studyGroupID)
+    const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + studyGroupID)
 
     const data = {
         name,
