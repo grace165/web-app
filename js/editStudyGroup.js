@@ -24,7 +24,7 @@ const h3 = document.querySelector("h3")
     }]
 }*/
 
-const meetingTimes = []
+meeting_times = []
 
 async function getSGInfo() {
     console.log("fetching info from study group")
@@ -68,8 +68,62 @@ async function getSGInfo() {
                     document.getElementById("private").checked = true
                 }
 
-                //if(myobj.meeting_times)
+                var myobj1 = myobj.meeting_times
 
+                for (var i = 0; i < myobj1.length; i++) {
+                    if (i > 0) {
+                        const hr2 = document.createElement('h6')
+                        here.appendChild(hr2)
+                    }
+
+                    const details = document.createElement("label")
+                    const details0 = document.createElement("input")
+
+                    details0.type = "String"
+                    details.innerHTML = "Day"
+                    details0.id = "day"
+
+                    details0.value = myobj1[i].day
+
+                    here.appendChild(details)
+                    here.appendChild(details0)
+
+                    const details1 = document.createElement("label")
+                    const details2 = document.createElement("input")
+
+                    details2.type = "time"
+                    details1.innerHTML = "Time"
+                    details2.id = "time"
+
+                    details2.value = myobj1[i].time
+
+                    here.appendChild(details1)
+                    here.appendChild(details2)
+
+                    const details3 = document.createElement("label")
+                    const details4 = document.createElement("input")
+
+                    details4.type = "String"
+                    details3.innerHTML = "Location"
+                    details4.id = "location"
+
+                    details4.value = myobj1[i].location
+
+                    here.appendChild(details3)
+                    here.appendChild(details4)
+
+                    const day = document.getElementById("day").value
+                    const time = document.getElementById("time").value
+                    const location = document.getElementById("location").value
+
+                    const meetingTime = {
+                        day,
+                        time,
+                        location
+                    }
+
+                    meeting_times.push(meetingTime)
+                }
             }
         }
     }
@@ -91,8 +145,8 @@ document.getElementById("saveChangesBtn").addEventListener('click', async (event
     const start_date = document.getElementById("startDate").value
     const end_date = document.getElementById("endDate").value
 
-    //const url = new URL("http://127.0.0.1:3000/studygroup/" + studyGroupID)
-    const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + studyGroupID)
+    const url = new URL("http://127.0.0.1:3000/studygroup/" + studyGroupID)
+    //const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + studyGroupID)
 
     const data = {
         name,
