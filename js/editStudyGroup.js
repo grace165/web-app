@@ -25,9 +25,9 @@ const h3 = document.querySelector("h3")
 }*/
 
 let meetingTime = {
-    "day" : "",
-    "time" : "",
-    "location" : ""
+    "day": "",
+    "time": "",
+    "location": ""
 }
 
 
@@ -36,8 +36,8 @@ meeting_times = []
 async function getSGInfo() {
     console.log("fetching info from study group")
 
-    //const url = new URL("http://127.0.0.1:3000/studygroups?")
-    const url = new URL("https://api-server-1.azurewebsites.net/studygroups?")
+    const url = new URL("http://127.0.0.1:3000/studygroups?")
+    //const url = new URL("https://api-server-1.azurewebsites.net/studygroups?")
 
     const options = {
         method: "GET",
@@ -83,6 +83,14 @@ async function getSGInfo() {
                         here.appendChild(hr2)
                     }
 
+                    let divid = "div: " + i
+
+                    let container = document.createElement("div")
+                    container.id = divid
+                    container.style.backgroundColor = "white"
+                    container.style.width = "425px"
+                    here.appendChild(container)
+
                     const details = document.createElement("label")
                     details.innerHTML = "Day"
 
@@ -91,8 +99,8 @@ async function getSGInfo() {
                     details0.id = "day"
                     details0.value = myobj1[i].day
 
-                    here.appendChild(details)
-                    here.appendChild(details0)
+                    container.appendChild(details)
+                    container.appendChild(details0)
 
                     const details1 = document.createElement("label")
                     details1.innerHTML = "Time"
@@ -102,8 +110,8 @@ async function getSGInfo() {
                     details2.id = "time"
                     details2.value = myobj1[i].time
 
-                    here.appendChild(details1)
-                    here.appendChild(details2)
+                    container.appendChild(details1)
+                    container.appendChild(details2)
 
                     const details3 = document.createElement("label")
                     details3.innerHTML = "Location"
@@ -113,18 +121,27 @@ async function getSGInfo() {
                     details4.id = "location"
                     details4.value = myobj1[i].location
 
-                    here.appendChild(details3)
-                    here.appendChild(details4)
+                    container.appendChild(details3)
+                    container.appendChild(details4)
 
-                    //
-                    //let dayForm = document.getElementById("day").value
-                    //let timeForm = document.getElementById("time").value
-                    //let locationForm = document.getElementById("location").value
+                    const deleteBtn = document.createElement("button")
+                    deleteBtn.className = "btn"
+                    deleteBtn.innerHTML = "Delete"
+                    deleteBtn.id = "deleteBtn"
+                    deleteBtn.type = "button"
+                    //deleteBtn.onclick = deleteButton(meeting_times[i])
+                    deleteBtn.addEventListener('click', async (event) => {
+                        deleteButton(divid)
+                    })
+
+                    container.appendChild(deleteBtn)
+
+                    //where deletebtn was previously located
 
                     meetingTime = {
-                        "day" : myobj1[i].day,
-                        "time" : myobj1[i].time,
-                        "location" : myobj1[i].location
+                        "day": myobj1[i].day,
+                        "time": myobj1[i].time,
+                        "location": myobj1[i].location
                     }
 
                     meeting_times[i] = meetingTime
@@ -132,6 +149,102 @@ async function getSGInfo() {
             }
         }
     }
+}
+
+document.getElementById("addMeetingTimeBtn").addEventListener('click', async (event) => {
+    event.preventDefault()
+    console.log("inside add meeting time button")
+
+    let divid = "div: " + (meeting_times.length)
+
+    const hr3 = document.createElement('h6')
+    here.appendChild(hr3)
+
+    let container = document.createElement("div")
+    container.id = divid
+    container.style.backgroundColor = "white"
+    container.style.width = "425px"
+    here.appendChild(container)
+
+
+    const newdetails = document.createElement("label")
+    newdetails.innerHTML = "Day"
+
+    const newdetails0 = document.createElement("input")
+    newdetails0.type = "String"
+    newdetails0.id = "day"
+    newdetails0.value = "Day"
+
+    container.appendChild(newdetails)
+    container.appendChild(newdetails0)
+
+    const newdetails1 = document.createElement("label")
+    newdetails1.innerHTML = "Time"
+
+    const newdetails2 = document.createElement("input")
+    newdetails2.type = "time"
+    newdetails2.id = "time"
+
+    container.appendChild(newdetails1)
+    container.appendChild(newdetails2)
+
+    const newdetails3 = document.createElement("label")
+    newdetails3.innerHTML = "Location"
+
+    const newdetails4 = document.createElement("input")
+    newdetails4.type = "String"
+    newdetails4.id = "location"
+    newdetails4.value = "Location"
+
+    container.appendChild(newdetails3)
+    container.appendChild(newdetails4)
+
+    const deleteBtn = document.createElement("button")
+    deleteBtn.className = "btn"
+    deleteBtn.innerHTML = "Delete"
+    deleteBtn.id = "deleteBtn"
+    deleteBtn.type = "button"
+    container.appendChild(deleteBtn)
+
+    deleteBtn.addEventListener('click', async (event) => {
+        deleteButton(divid)
+    })
+
+    meetingTime = {
+        "day": day,
+        "time": time,
+        "location": location
+    }
+
+    for (let i = 0; i < meeting_times.length + 1; i++) {
+        if (meeting_times[i] == null) {
+            meeting_times[i] = meetingTime
+            return
+        }
+        console.log("ready to return meeting times")
+        //return meeting_times
+    }
+})
+
+function deleteButton(id) {
+    console.log("ID: " + id)
+
+    document.getElementById(id).remove()
+
+    //console.log("sliced id: " + id.slice(5))
+
+    meeting_times = meeting_times.filter(element => {
+        return element !== null && element !== undefined
+    })
+
+    console.log("Old meeting_times: " + JSON.stringify(meeting_times))
+
+    const slicedID = id.slice(5)
+    meeting_times = meeting_times.filter(element => {
+        return element !== meeting_times[slicedID]
+    })
+
+    console.log("New meeting_times: " + JSON.stringify(meeting_times))
 }
 
 getSGInfo()
@@ -153,18 +266,17 @@ document.getElementById("saveChangesBtn").addEventListener('click', async (event
     var dayArr = document.querySelectorAll("input[id='day']")
     var timeArr = document.querySelectorAll("input[id='time']")
     var locationArr = document.querySelectorAll("input[id='location']")
-    
-    for(const key in meeting_times){
+
+    for (const key in meeting_times) {
         //console.log(meeting_times[key])
         meeting_times[key].day = dayArr[key].value
         meeting_times[key].time = timeArr[key].value
         meeting_times[key].location = locationArr[key].value
-        
     }
     console.log(meeting_times)
 
-    //const url = new URL("http://127.0.0.1:3000/studygroup/" + studyGroupID)
-    const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + studyGroupID)
+    const url = new URL("http://127.0.0.1:3000/studygroup/" + studyGroupID)
+    //const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + studyGroupID)
 
     const data = {
         name,

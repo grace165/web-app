@@ -9,22 +9,10 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
     const skip = document.getElementById("skip").value
     const sortBy = document.querySelector('input[name="sortBy"]:checked').value
     const ongoing = document.querySelector('input[name="ongoing"]:checked').value
+    const owned = document.querySelector('input[name="owned"]:checked').value
     const error = "cannot reach params"
 
     const h2 = document.querySelector("h2")
-
-    /*
-    const h3 = document.querySelector("h3")
-
-    const nameBox = document.getElementById("nameBox")
-    const schoolBox = document.getElementById("schoolBox")
-    const coursenumBox = document.getElementById("coursenumBox")
-    const descriptionBox = document.getElementById("descriptionBox")
-    const ispublicBox = document.getElementById("ispublicBox")
-    const maxparticipantsBox = document.getElementById("maxparticipantsBox")
-    const startdateBox = document.getElementById("startdateBox")
-    const enddateBox = document.getElementById("enddateBox")
-    */
 
     //const url = new URL("http://127.0.0.1:3000/studygroups?")
     const url = new URL("https://api-server-1.azurewebsites.net/studygroups?")
@@ -50,6 +38,9 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
     if (ongoing !== null) {
         url.searchParams.append("ongoing", ongoing)
     }
+    if (owned !== null) {
+        url.searchParams.append("owned", owned)
+    }
     else {
         url.searchParams.append("Error", error)
     }
@@ -59,14 +50,11 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
         limit,
         skip,
         sortBy,
-        ongoing
+        ongoing,
+        owned
     }
 
     console.log(data)
-
-    /*for(const param of params) {
-        console.log(param)
-    }*/
 
     const options = {
         method: "GET",
@@ -166,33 +154,22 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
 
                 let value = myobj._id
 
-                editButton.addEventListener('click', function() {
+                editButton.addEventListener('click', function () {
                     EditStudyGroup(value)
                 })
                 here.appendChild(editButton)
             }
-    
-            //nameBox.innerHTML = "Study Group: " + myobj.name + "\n"
-            //schoolBox.innerHTML = "School: " + myobj.school + "\n"
-            //coursenumBox.innerHTML = "Course number: " + myobj.course_number + "\n"
-            //descriptionBox.innerHTML = "Description: " + myobj.description + "\n"
-            //ispublicBox.innerHTML = "Is public? " + myobj.is_public + "\n"
-            //maxparticipantsBox.innerHTML = "Max participants: " + myobj.max_participants + "\n"
-            //startdateBox.innerHTML = "Start date: " + myobj.start_date + "\n"
-            //enddateBox.innerHTML = "End date: " + myobj.end_date + "\n"
         }
-
     } else {
         console.log("in else block")
         h2.innerHTML = 'Please try searching again...'
     }
 })
 
-
 function EditStudyGroup(value) {
     console.log("in edit study group function")
 
-    localStorage.setItem("studyGroupID",value)
+    localStorage.setItem("studyGroupID", value)
     console.log(localStorage.getItem("studyGroupID"))
 
     window.location.href = "editStudyGroup.html"
