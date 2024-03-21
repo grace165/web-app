@@ -36,8 +36,8 @@ meeting_times = []
 async function getSGInfo() {
     console.log("fetching info from study group")
 
-    const url = new URL("http://127.0.0.1:3000/studygroups?")
-    //const url = new URL("https://api-server-1.azurewebsites.net/studygroups?")
+    //const url = new URL("http://127.0.0.1:3000/studygroups?")
+    const url = new URL("https://api-server-1.azurewebsites.net/studygroups?")
 
     const options = {
         method: "GET",
@@ -275,8 +275,8 @@ document.getElementById("saveChangesBtn").addEventListener('click', async (event
     }
     console.log(meeting_times)
 
-    const url = new URL("http://127.0.0.1:3000/studygroup/" + studyGroupID)
-    //const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + studyGroupID)
+    //const url = new URL("http://127.0.0.1:3000/studygroup/" + studyGroupID)
+    const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + studyGroupID)
 
     const data = {
         name,
