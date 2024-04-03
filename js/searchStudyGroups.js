@@ -237,7 +237,7 @@ function LeaveStudyGroup(value) {
     const here3 = document.getElementById("here3")
 
     //const url = new URL("http://127.0.0.1:3000/studygroup/" + value + "/participants?remove")
-    const url = new URL("https://api-server-1.azurewebsites.net/studygroups/" + value + "/participants?remove")
+    const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + value + "/participants?remove")
 
     const options = {
         method: "PATCH",
@@ -274,7 +274,7 @@ function JoinStudyGroup(value) {
     const here3 = document.getElementById("here3")
 
     //const url = new URL("http://127.0.0.1:3000/studygroup/" + value + "/participants?add")
-    const url = new URL("https://api-server-1.azurewebsites.net/studygroups/" + value + "/participants?add")
+    const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + value + "/participants?add")
 
     const options = {
         method: "PATCH",
