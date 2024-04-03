@@ -22,7 +22,7 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
     console.log("inside search group function")
 
     //append each item to url
-    if (search !== null) {
+    if (search) {
         url.searchParams.append("search", search)
     }
     if (limit !== null) {
