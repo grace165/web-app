@@ -12,6 +12,12 @@ h1, h2 {
     font-size: 40px;
 }
 
+h3 {
+    color: rgba(111, 0, 255, 0.671);
+    font-size: 30px;
+    text-decoration: underline;
+}
+
 p {
     font-family: sans-serif;
     font-weight: bold;
@@ -76,6 +82,15 @@ input{
     margin: auto;
     background-color: rgb(229, 209, 255);
     padding-top: 80px;
+}
+
+.container2{
+    border-radius: 15px;
+    margin: 15px;
+    text-indent: 15px; 
+    background-color: white;
+    justify-content: left;
+    text-align: left;
 }
 
 #divp {

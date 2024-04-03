@@ -4,32 +4,11 @@ const studyGroupID = localStorage.getItem("studyGroupID")
 
 const h3 = document.querySelector("h3")
 
-/*var sginfo = {
-    "name": "",
-    "is_public": "true",
-    "max_participants": 1,
-    "start_date": {
-
-    },
-    "end_date": {
-
-    },
-    "school": "",
-    "description": "",
-    "course_number": "",
-    "meeting_times": [{
-        "day": "",
-        "time": "",
-        "location": ""
-    }]
-}*/
-
 let meetingTime = {
     "day": "",
     "time": "",
     "location": ""
 }
-
 
 meeting_times = []
 
@@ -310,12 +289,16 @@ document.getElementById("saveChangesBtn").addEventListener('click', async (event
         h3.innerHTML = "Saving Changes..."
 
         setTimeout(() => {
-            location.href = "searchStudyGroups.html"
+            location.href = "main.html"
         }, 4000)
 
     } else {
         console.log("in else block")
         h3.innerHTML = 'Please try saving your changes again...'
+
+        setTimeout(() => {
+            location.href = "searchStudyGroups.html"
+        }, 4000)
     }
 
 })

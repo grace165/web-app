@@ -45,10 +45,13 @@
             <div class="leftAligned">
                 <p>View:</p>
                 <label for="all">All Study Groups</label>
-                <input type="radio" id="all" name="owned" value="false" checked>
+                <input type="radio" id="all" name="owned" value="all" checked>
 
-                <label for="self">My Study Groups</label>
-                <input type="radio" id="self" name="owned" value="true">
+                <label for="self">Owned Groups</label>
+                <input type="radio" id="self" name="owned" value="self">
+
+                <label for="member">Joined Groups</label>
+                <input type="radio" id="member" name="owned" value="member">
             </div>
 
             <div class="space"></div>
@@ -60,6 +63,7 @@
         <h2></h2>
 
         <p class="container2" id="here"></p>
+        <div id="here3"></div>
 
     </div>
 

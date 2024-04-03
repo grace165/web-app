@@ -40,6 +40,7 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
     }
     if (owned !== null) {
         url.searchParams.append("owned", owned)
+        localStorage.setItem("owned", owned)
     }
     else {
         url.searchParams.append("Error", error)
@@ -71,7 +72,7 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
     if (response.status == 200) {
         console.log("Searching study groups...")
         console.log("token: " + token)
-        console.log(obj)
+        console.log("obj: " + JSON.stringify(obj))
         console.log("userid: " + userid)
 
         //const obj2 = JSON.stringify(obj)
@@ -150,7 +151,7 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
                 const editButton = document.createElement("button")
                 //studygroupID = myobj._id
                 editButton.className = "editButton"
-                editButton.innerHTML = "Edit Study Group"
+                editButton.innerHTML = "Edit Group"
 
                 let value = myobj._id
 
@@ -158,6 +159,52 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
                     EditStudyGroup(value)
                 })
                 here.appendChild(editButton)
+
+                const deleteButton = document.createElement("button")
+                deleteButton.className = "deleteButton"
+                deleteButton.innerHTML = "Delete Group"
+
+                deleteButton.addEventListener('click', function () {
+                    DeleteStudyGroup(value)
+                })
+
+                const space = document.createElement("div")
+                space.className = "space2"
+                here.append(space)
+
+                here.append(deleteButton)
+            }
+            else {
+                //if not in participants array, show join button
+                let participants = []
+                participants = myobj.participants
+
+                const varButton = document.createElement("button")
+                varButton.className = "varButton"
+
+                const varButton2 = document.createElement("button")
+                varButton2.className = "varButton"
+
+                let value = myobj._id
+
+                if (participants.includes(userid)) {
+                    console.log("inside if statement")
+                    here.append(varButton)
+                    varButton.innerHTML = "Leave"
+
+                    varButton.addEventListener('click', function () {
+                        LeaveStudyGroup(value)
+                    })
+                }
+                else {
+                    //(participants.includes(userid) == false) {
+                    here.append(varButton2)
+                    varButton2.innerHTML = "Join"
+
+                    varButton2.addEventListener('click', function () {
+                        JoinStudyGroup(value)
+                    })
+                }
             }
         }
     } else {
@@ -173,4 +220,87 @@ function EditStudyGroup(value) {
     console.log(localStorage.getItem("studyGroupID"))
 
     window.location.href = "editStudyGroup.html"
+}
+
+function DeleteStudyGroup(value) {
+    console.log("in delete study group function")
+
+    localStorage.setItem("studyGroupID", value)
+    console.log(localStorage.getItem("studyGroupID"))
+
+    window.location.href = "delete.html"
+}
+
+function LeaveStudyGroup(value) {
+    console.log("inside leave study group function")
+
+    const here3 = document.getElementById("here3")
+
+    //const url = new URL("http://127.0.0.1:3000/studygroup/" + value + "/participants?remove")
+    const url = new URL("https://api-server-1.azurewebsites.net/studygroups/" + value + "/participants?remove")
+
+    const options = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        //body: JSON.stringify(data)
+    }
+
+    let response = fetch(url, options)
+    //const obj = response.json()    
+
+    if (response.status == 200) {
+        //here3.innerHTML = "You have left this group."
+
+        setTimeout(() => {
+            location.href = "searchStudyGroups.html"
+        }, 4000)
+    } else {
+        console.log("response status: " + response.status)
+        //here3.innerHTML = "Please try leaving again"
+
+        setTimeout(() => {
+            location.href = "searchStudyGroups.html"
+        }, 4000)
+
+    }
+}
+
+function JoinStudyGroup(value) {
+    console.log("inside join group function")
+
+    const here3 = document.getElementById("here3")
+
+    //const url = new URL("http://127.0.0.1:3000/studygroup/" + value + "/participants?add")
+    const url = new URL("https://api-server-1.azurewebsites.net/studygroups/" + value + "/participants?add")
+
+    const options = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        //body: JSON.stringify(data)
+    }
+
+    let response = fetch(url, options)
+    //const obj = response.json()    
+
+    console.log("response status: " + response.status)
+
+    if (response.status == 200) {
+        //here3.innerHTML = "Thank you for joining!"
+
+        setTimeout(() => {
+            location.href = "searchStudyGroups.html"
+        }, 4000)
+    } else {
+        //here3.innerHTML = "Please try joining again..."
+
+        setTimeout(() => {
+            location.href = "searchStudyGroups.html"
+        }, 4000)
+    }
 }

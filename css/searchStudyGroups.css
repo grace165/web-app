@@ -67,7 +67,7 @@ input[type="radio"] {
     width: 20px;
     display: flex;
     margin-top: -35px;
-    margin-left: 110px;
+    margin-left: 100px;
 }
 
 hr{
@@ -84,6 +84,10 @@ hr{
 
 .space{
     margin-top: 30px;
+}
+
+.space2{
+    margin-top: 20px;
 }
 
 .btn{
@@ -124,7 +128,27 @@ hr{
     border-radius: 15px;
     background-color: rgba(111, 0, 255, 0.671);
     color: white;
-    margin-left: 325px;
+    margin-left: 335px;
+}
+
+.deleteButton{
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid rgba(51, 1, 116, 0.671);
+    border-radius: 15px;
+    background-color: rgba(111, 0, 255, 0.671);
+    color: white;
+    margin-left: 327.5px;
+}
+
+.varButton{
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid rgba(51, 1, 116, 0.671);
+    border-radius: 15px;
+    background-color: rgba(111, 0, 255, 0.671);
+    color: white;
+    margin-left: 355px;
 }
 
 #nameBox{
