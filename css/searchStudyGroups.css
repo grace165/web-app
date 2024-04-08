@@ -141,6 +141,16 @@ hr{
     margin-left: 327.5px;
 }
 
+.participantsButton{
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid rgba(51, 1, 116, 0.671);
+    border-radius: 15px;
+    background-color: rgba(111, 0, 255, 0.671);
+    color: white;
+    margin-left: 310px;
+}
+
 .varButton{
     text-decoration: none;
     padding: 15px;

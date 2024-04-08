@@ -69,6 +69,8 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
     let response = await fetch(url, options)
     const obj = await response.json()
 
+    console.log("url: " + url)
+
     if (response.status == 200) {
         console.log("Searching study groups...")
         console.log("token: " + token)
@@ -148,6 +150,12 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
             console.log("study group owner id: " + myobj.owner)
 
             if (myobj.owner == userid) {
+                const space = document.createElement("div")
+                space.className = "space2"
+
+                const space2 = document.createElement("div")
+                space2.className = "space2"
+
                 const editButton = document.createElement("button")
                 //studygroupID = myobj._id
                 editButton.className = "editButton"
@@ -160,6 +168,19 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
                 })
                 here.appendChild(editButton)
 
+                const participantsButton = document.createElement("button")
+                participantsButton.className = "participantsButton"
+                participantsButton.innerHTML = "Display Participants"
+
+                //let participantsArr = myobj.participants
+
+                participantsButton.addEventListener('click', function () {
+                    OpenParticipants(value)
+                })
+
+                here.append(space2)
+                here.append(participantsButton)
+
                 const deleteButton = document.createElement("button")
                 deleteButton.className = "deleteButton"
                 deleteButton.innerHTML = "Delete Group"
@@ -168,10 +189,7 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
                     DeleteStudyGroup(value)
                 })
 
-                const space = document.createElement("div")
-                space.className = "space2"
                 here.append(space)
-
                 here.append(deleteButton)
             }
             else {
@@ -212,6 +230,15 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
         h2.innerHTML = 'Please try searching again...'
     }
 })
+
+function OpenParticipants(value) {
+    console.log("inside open participants funciton")
+
+    localStorage.setItem("studyGroupID2", value)
+    console.log(localStorage.getItem("studyGroupID2"))
+
+    window.location.href = "participants.html"
+}
 
 function EditStudyGroup(value) {
     console.log("in edit study group function")
