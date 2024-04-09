@@ -40,8 +40,8 @@ async function DisplayParticipants() {
                         let currentID = myobj.participants[i]
                         console.log("ID: " + currentID)
 
-                        const url = new URL("http://127.0.0.1:3000/user/" + currentID)
-                        //const url = new URL("https://api-server-1.azurewebsites.net/user/" + studyGroupID)
+                        //const url = new URL("http://127.0.0.1:3000/user/" + currentID)
+                        const url = new URL("https://api-server-1.azurewebsites.net/user/" + studyGroupID)
 
                         //:id endpoint
                         const options = {
