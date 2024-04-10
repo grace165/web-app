@@ -153,9 +153,6 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
                 const space = document.createElement("div")
                 space.className = "space2"
 
-                const space2 = document.createElement("div")
-                space2.className = "space2"
-
                 const editButton = document.createElement("button")
                 //studygroupID = myobj._id
                 editButton.className = "editButton"
@@ -167,19 +164,6 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
                     EditStudyGroup(value)
                 })
                 here.appendChild(editButton)
-
-                const participantsButton = document.createElement("button")
-                participantsButton.className = "participantsButton"
-                participantsButton.innerHTML = "Display Participants"
-
-                //let participantsArr = myobj.participants
-
-                participantsButton.addEventListener('click', function () {
-                    OpenParticipants(value)
-                })
-
-                here.append(space2)
-                here.append(participantsButton)
 
                 const deleteButton = document.createElement("button")
                 deleteButton.className = "deleteButton"
@@ -224,6 +208,23 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
                     })
                 }
             }
+            const participantsButton = document.createElement("button")
+            participantsButton.className = "participantsButton"
+            participantsButton.innerHTML = "Display Participants"
+        
+            //let participantsArr = myobj.participants
+        
+            let value = myobj._id
+
+            participantsButton.addEventListener('click', function () {
+                OpenParticipants(value)
+            })
+        
+            const space2 = document.createElement("div")
+            space2.className = "space2"
+        
+            here.append(space2)
+            here.append(participantsButton)
         }
     } else {
         console.log("in else block")

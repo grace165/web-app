@@ -28,52 +28,52 @@ async function DisplayParticipants() {
             if (studyGroupID2 == myobj._id) {
                 console.log(myobj._id)
                 //for (const key in obj) {
-                    console.log("for loop")
-                    var myobj = obj[key]
+                console.log("for loop")
+                var myobj = obj[key]
 
-                    //if (studyGroupID2 == myobj._id) {
-                    console.log(myobj._id)
-                    console.log("inside if statement")
-                    //document.getElementById("p").value = myobj.participants
-                    for (let i = 0; i < myobj.participants.length; i++) {
+                //if (studyGroupID2 == myobj._id) {
+                console.log(myobj._id)
+                console.log("inside if statement")
+                //document.getElementById("p").value = myobj.participants
+                for (let i = 0; i < myobj.participants.length; i++) {
 
-                        let currentID = myobj.participants[i]
-                        console.log("ID: " + currentID)
+                    let currentID = myobj.participants[i]
+                    console.log("ID: " + currentID)
 
-                        //const url = new URL("http://127.0.0.1:3000/user/" + currentID)
-                        const url = new URL("https://api-server-1.azurewebsites.net/user/" + currentID)
+                    //const url = new URL("http://127.0.0.1:3000/user/" + currentID)
+                    const url = new URL("https://api-server-1.azurewebsites.net/user/" + currentID)
 
-                        //:id endpoint
-                        const options = {
-                            method: "GET",
-                            headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${token}`
-                            }
-                        }
-
-                        let response = await fetch(url, options)
-                        const obj2 = await response.json()
-
-                        console.log("obj: " + JSON.stringify(obj2))
-
-                        if (response.status == 200) {
-                            console.log("Getting participants...")
-
-                            const here = document.createElement("p")
-                            here.innerHTML = [i +1] + ". " + obj2.username
-                            here.className = "h1"
-                            p.append(here)
-                        }
-                        else {
-                            console.log("something went wrong")
-                            p.innerHTML = "Something went wrong."
-
-                            setTimeout(() => {
-                                location.href = "searchStudyGroups.html"
-                            }, 4000)
+                    //:id endpoint
+                    const options = {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`
                         }
                     }
+
+                    let response = await fetch(url, options)
+                    const obj2 = await response.json()
+
+                    console.log("obj: " + JSON.stringify(obj2))
+
+                    if (response.status == 200) {
+                        console.log("Getting participants...")
+
+                        const here = document.createElement("p")
+                        here.innerHTML = [i + 1] + ". " + obj2.username
+                        here.className = "h1"
+                        p.append(here)
+                    }
+                    else {
+                        console.log("something went wrong")
+                        p.innerHTML = "Something went wrong."
+
+                        setTimeout(() => {
+                            location.href = "searchStudyGroups.html"
+                        }, 4000)
+                    }
+                }
             } else {
                 console.log("error in first step")
             }
