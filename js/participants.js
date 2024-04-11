@@ -31,6 +31,30 @@ async function DisplayParticipants() {
                 console.log("for loop")
                 var myobj = obj[key]
 
+                let owner = myobj.owner
+
+                const url = new URL("https://api-server-1.azurewebsites.net/user/" + owner)
+
+                //:id endpoint
+                const options = {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+
+                let response = await fetch(url, options)
+                const obj0 = await response.json()
+
+                if (response.status == 200) {
+                    const here1 = document.createElement("p")
+                    here1.innerHTML = "Owner: " + obj0.username
+                    here1.className = "h1"
+                    p.append(here1)
+                }
+
+
                 //if (studyGroupID2 == myobj._id) {
                 console.log(myobj._id)
                 console.log("inside if statement")
