@@ -18,7 +18,6 @@ document.getElementById("logoutButton").addEventListener('click', async (event) 
     location.href = "index.html"
 })
 
-
 //display owned study groups
 
 

@@ -15,6 +15,16 @@ p{
     font-family: sans-serif;
     font-weight: bold;
     color: darkslategray;
+    font-size: 18px;
+    justify-content: left;
+    text-align: left;
+    margin-left: 90px;
+}
+
+hr{
+    border-radius: 0px;
+    border: 2px solid black;
+    width: 700px;
 }
 
 .center {
@@ -52,7 +62,6 @@ p{
     background-color: rgba(111, 0, 255, 0.671);
     color: white;
     display: block;
-    justify-content: left;
 }
 
 .msgbtn:hover{

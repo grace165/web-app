@@ -52,6 +52,16 @@ async function DisplayParticipants() {
                     here1.innerHTML = "Owner: " + obj0.username
                     here1.className = "h1"
                     p.append(here1)
+
+                    for (let i = 0; i < myobj.participants.length; i++) {
+                        if (userid == obj0.owner || userid == participants[i]) {
+                            const msgButton = document.createElement("button")
+                            msgButton.innerHTML = "Message"
+                            msgButton.className = "msgbtn"
+                            msgButton.id = "msgButton"
+                            p.append(msgButton)
+                        }
+                    }
                 }
 
 
@@ -88,6 +98,15 @@ async function DisplayParticipants() {
                         here.innerHTML = [i + 1] + ". " + obj2.username
                         here.className = "h1"
                         p.append(here)
+
+                        //if participant or owner show button
+                        if (userid == myobj.participants[i] || userid == myobj.owner) {
+                            const msgButton = document.createElement("button")
+                            msgButton.innerHTML = "Message"
+                            msgButton.className = "msgbtn"
+                            msgButton.id = "msgButton"
+                            p.append(msgButton)
+                        }
                     }
                     else {
                         console.log("something went wrong")
