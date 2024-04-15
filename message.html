@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="css/message.css">
+</head>
+
+<body>
+    <div id="main">
+        <h1>Send Notification</h1>
+        <div class="space"></div>
+        <p></p>
+    </div>
+
+    <div class="container center">
+        <form>
+            <div class="leftAligned">
+                <div class="leftAligned">
+                    <p>Notification Type:</p>
+                    <label for="Message">Message</label>
+                    <input type="radio" id="msg" name="notificationType" checked value="Message">
+                </div>
+
+                <div class="space"></div>
+
+                <input type="text" id="subject" name="subject" placeholder="Subject...">
+
+                <div class="space"></div>
+
+                <textarea id="body" name="body" placeholder="Body..."></textarea>
+
+                <div class="space"></div>
+
+                <h2></h2>
+
+                <div class="space"></div>
+
+                <button type="submit" id="messageButton" class="btn">Send Notification</button>
+
+                <div class="space"></div>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="space"></div>
+
+    <div class="center">
+        <a class="btn" href="main.html">Back to Main</a>
+    </div>
+
+    <div class="space"></div>
+
+    <script type="module" src="js/message.js"> </script>
+</body>
+
+</html>

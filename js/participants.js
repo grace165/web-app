@@ -29,7 +29,7 @@ async function DisplayParticipants() {
                 console.log(myobj._id)
                 //for (const key in obj) {
                 console.log("for loop")
-                var myobj = obj[key]
+                //var myobj = obj[key]
 
                 let owner = myobj.owner
 
@@ -48,18 +48,50 @@ async function DisplayParticipants() {
                 const obj0 = await response.json()
 
                 if (response.status == 200) {
+                    const ownerDiv = document.createElement("div")
+
                     const here1 = document.createElement("p")
                     here1.innerHTML = "Owner: " + obj0.username
                     here1.className = "h1"
-                    p.append(here1)
+                    ownerDiv.append(here1)
+                    p.append(ownerDiv)
+
+                    console.log(JSON.stringify("participants: " + myobj.participants))
 
                     for (let i = 0; i < myobj.participants.length; i++) {
-                        if (userid == obj0.owner || userid == participants[i]) {
+                        console.log("in for loop")
+                        if (userid == obj0._id) {
+                            if (i = 1) {
+                                console.log("creating message button")
+                                const msgButton = document.createElement("button")
+                                msgButton.innerHTML = "Message"
+                                msgButton.className = "msgbtn"
+                                msgButton.id = "msgButton"
+
+                                let value = obj0._id
+
+                                msgButton.addEventListener('click', function () {
+                                    Message(value)
+                                })
+
+                                ownerDiv.append(msgButton)
+                            }
+                        }
+                        else if (userid == myobj.participants[i]) {
+                            console.log("creating message button")
                             const msgButton = document.createElement("button")
                             msgButton.innerHTML = "Message"
                             msgButton.className = "msgbtn"
                             msgButton.id = "msgButton"
-                            p.append(msgButton)
+
+                            let value = obj0._id
+
+                            msgButton.addEventListener('click', function () {
+                                Message(value)
+                            })
+
+                            ownerDiv.append(msgButton)
+
                         }
                     }
                 }
@@ -94,18 +126,45 @@ async function DisplayParticipants() {
                     if (response.status == 200) {
                         console.log("Getting participants...")
 
+                        const participantDiv = document.createElement("div")
+
                         const here = document.createElement("p")
                         here.innerHTML = [i + 1] + ". " + obj2.username
                         here.className = "h1"
-                        p.append(here)
+                        participantDiv.append(here)
+                        p.append(participantDiv)
 
                         //if participant or owner show button
-                        if (userid == myobj.participants[i] || userid == myobj.owner) {
-                            const msgButton = document.createElement("button")
-                            msgButton.innerHTML = "Message"
-                            msgButton.className = "msgbtn"
-                            msgButton.id = "msgButton"
-                            p.append(msgButton)
+                        for (let i = 0; i < myobj.participants.length; i++) {
+                            if (userid == obj0._id) {
+                                if (i = 1) {
+                                    const msgButton = document.createElement("button")
+                                    msgButton.innerHTML = "Message"
+                                    msgButton.className = "msgbtn"
+                                    msgButton.id = "msgButton"
+
+                                    let value = currentID
+
+                                    msgButton.addEventListener('click', function () {
+                                        Message(value)
+                                    })
+
+                                    participantDiv.append(msgButton)
+                                }
+                            } else if (userid == myobj.participants[i]) {
+                                const msgButton = document.createElement("button")
+                                msgButton.innerHTML = "Message"
+                                msgButton.className = "msgbtn"
+                                msgButton.id = "msgButton"
+
+                                let value = currentID
+
+                                msgButton.addEventListener('click', function () {
+                                    Message(value)
+                                })
+
+                                participantDiv.append(msgButton)
+                            }
                         }
                     }
                     else {
@@ -122,6 +181,16 @@ async function DisplayParticipants() {
             }
         }
     }
+}
+
+
+function Message(value) {
+    console.log("messaging window opening")
+
+    localStorage.setItem("participantID", value)
+    console.log(localStorage.getItem("participantID"))
+
+    window.location.href = "message.html"
 }
 
 DisplayParticipants()
