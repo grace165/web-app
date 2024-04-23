@@ -11,8 +11,8 @@ document.getElementById("postButton").addEventListener('click', async (event) =>
 
     const h2 = document.querySelector("h2")
 
-    const url = "http://127.0.0.1:3000/user/insta-post"
-    //const url = "https://api-server-1.azurewebsites.net/user/insta-post"
+    //const url = "http://127.0.0.1:3000/user/insta-post"
+    const url = "https://api-server-1.azurewebsites.net/user/insta-post"
 
     console.log("inside post function")
 
