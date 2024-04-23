@@ -35,10 +35,13 @@ document.getElementById("loginButton").addEventListener('click', async (event) =
     console.log("looking for else block")
 
     if (response.status == 200) {
+        localStorage.clear()
         console.log("saving user obj and token in local storage")
         localStorage.setItem("data", JSON.stringify(data))
         localStorage.setItem("token", obj.token)
         localStorage.setItem("userid", obj.user._id)
+        localStorage.setItem("ig_username", obj.user.ig_username)
+        localStorage.setItem("ig_password", obj.user.ig_password)
 
         localStorage.getItem("token")
         localStorage.getItem("userid")

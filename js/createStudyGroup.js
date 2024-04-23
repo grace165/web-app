@@ -1,10 +1,6 @@
-//set default start date to today
-//document.getElementById("startDate").valueAsDate = new Date();
-
-//if(startDate.onfocus = 'date'){
-//    document.getElementById("startDate").valueAsDate = new Date();
-//}
 const token = localStorage.getItem("token")
+const ig_username = localStorage.getItem("ig_username")
+const ig_password = localStorage.getItem("ig_password")
 
 //new array to add meetings time objects to
 const meeting_times = [];
@@ -43,7 +39,7 @@ document.getElementById("plusButton").addEventListener('click', async (event) =>
     //document.getElementById("idPrint").innerHTML = "Meeting Time: " + JSON.stringify(meetingsArray)
     document.getElementById("idPrint").innerHTML = JSON.stringify(meeting_times, null, 2)
 
-    if(checkboxes.checked == true) {
+    if (checkboxes.checked == true) {
         checkboxes.checked = ''
     }
 
@@ -77,7 +73,7 @@ document.getElementById("createGroupButton").addEventListener('click', async (ev
         course_number,
         max_participants,
         start_date: start_date ? start_date : undefined,
-        end_date: end_date ? end_date :undefined,
+        end_date: end_date ? end_date : undefined,
         meeting_times
         //daysofweek,
         //time,
@@ -106,9 +102,17 @@ document.getElementById("createGroupButton").addEventListener('click', async (ev
 
         h2.innerHTML = "Creating Study Group..."
 
-        setTimeout(() => {
-            location.href = "main.html"
-        }, 4000)
+        console.log(ig_username)
+
+        if (ig_username == null) {
+            setTimeout(() => {
+                location.href = "instaInfo2.html"
+            }, 4000)
+        } else {
+            setTimeout(() => {
+                location.href = "insta.html"
+            }, 4000)
+        }
 
     } else {
         console.log("in else block")

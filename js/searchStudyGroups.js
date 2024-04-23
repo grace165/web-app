@@ -1,5 +1,6 @@
 const token = localStorage.getItem("token")
 const userid = localStorage.getItem("userid")
+const ig_username = localStorage.getItem("ig_username")
 
 document.getElementById("searchButton").addEventListener('click', async (event) => {
     event.preventDefault()
@@ -199,7 +200,6 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
                     })
                 }
                 else {
-                    //(participants.includes(userid) == false) {
                     here.append(varButton2)
                     varButton2.innerHTML = "Join"
 
@@ -211,18 +211,18 @@ document.getElementById("searchButton").addEventListener('click', async (event) 
             const participantsButton = document.createElement("button")
             participantsButton.className = "participantsButton"
             participantsButton.innerHTML = "Display Participants"
-        
+
             //let participantsArr = myobj.participants
-        
+
             let value = myobj._id
 
             participantsButton.addEventListener('click', function () {
                 OpenParticipants(value)
             })
-        
+
             const space2 = document.createElement("div")
             space2.className = "space2"
-        
+
             here.append(space2)
             here.append(participantsButton)
         }
@@ -259,10 +259,9 @@ function DeleteStudyGroup(value) {
     window.location.href = "delete.html"
 }
 
-function LeaveStudyGroup(value) {
+async function LeaveStudyGroup(value) {
     console.log("inside leave study group function")
-
-    const here3 = document.getElementById("here3")
+    console.log("value: " + value)
 
     //const url = new URL("http://127.0.0.1:3000/studygroup/" + value + "/participants?remove")
     const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + value + "/participants?remove")
@@ -273,33 +272,34 @@ function LeaveStudyGroup(value) {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
-        //body: JSON.stringify(data)
+        //body: JSON.stringify(value)
     }
 
-    let response = fetch(url, options)
+    let response = await fetch(url, options)
+
+    console.log("response status: " + response.status)
     //const obj = response.json()    
 
     if (response.status == 200) {
-        //here3.innerHTML = "You have left this group."
+        console.log("success in leave function")
 
         setTimeout(() => {
             location.href = "searchStudyGroups.html"
         }, 4000)
     } else {
-        console.log("response status: " + response.status)
-        //here3.innerHTML = "Please try leaving again"
+        console.log("error in leave function")
 
         setTimeout(() => {
+
             location.href = "searchStudyGroups.html"
         }, 4000)
 
     }
 }
 
-function JoinStudyGroup(value) {
+async function JoinStudyGroup(value) {
     console.log("inside join group function")
-
-    const here3 = document.getElementById("here3")
+    console.log("value: " + value)
 
     //const url = new URL("http://127.0.0.1:3000/studygroup/" + value + "/participants?add")
     const url = new URL("https://api-server-1.azurewebsites.net/studygroup/" + value + "/participants?add")
@@ -313,22 +313,35 @@ function JoinStudyGroup(value) {
         //body: JSON.stringify(data)
     }
 
-    let response = fetch(url, options)
-    //const obj = response.json()    
+    let response = await fetch(url, options)
 
     console.log("response status: " + response.status)
 
     if (response.status == 200) {
-        //here3.innerHTML = "Thank you for joining!"
+        console.log("ig username: " + ig_username)
 
-        setTimeout(() => {
-            location.href = "searchStudyGroups.html"
-        }, 4000)
+        if (ig_username === null) {
+            console.log("console log null")
+            setTimeout(() => {
+                location.href = "instaInfo2.html"
+            }, 4000)
+        } else if (ig_username === "undefined") {
+            setTimeout(() => {
+                console.log("console log undefined")
+                location.href = "instaInfo2.html"
+            }, 4000)
+        } else {
+            setTimeout(() => {
+                 location.href = "insta.html"
+            }, 4000)
+        }
     } else {
-        //here3.innerHTML = "Please try joining again..."
+        console.log("error in join function")
+
 
         setTimeout(() => {
             location.href = "searchStudyGroups.html"
         }, 4000)
+
     }
 }
