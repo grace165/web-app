@@ -102,20 +102,30 @@ document.getElementById("createGroupButton").addEventListener('click', async (ev
 
         h2.innerHTML = "Creating Study Group..."
 
-        console.log(ig_username)
+        console.log("ig_username: " + ig_username)
 
-        if (ig_username == null) {
+        if (ig_username === "undefined") {
+            console.log("in null block")
+
+            setTimeout(() => {
+                location.href = "instaInfo2.html"
+            }, 4000)
+        } else if (ig_username === null) {
+            console.log("in undefined block")
+
             setTimeout(() => {
                 location.href = "instaInfo2.html"
             }, 4000)
         } else {
+            console.log("in else block")
+
             setTimeout(() => {
                 location.href = "insta.html"
             }, 4000)
         }
 
     } else {
-        console.log("in else block")
+        console.log("in final else block")
         h2.innerHTML = 'Please try creating your group again...'
     }
 })
